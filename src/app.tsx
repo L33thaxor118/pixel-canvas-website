@@ -1,9 +1,14 @@
 import * as React from "react"
+import LedClient from "azledclientbrowser"
 import { useCallback, useState, memo } from "react"
 
 export default function App() {
     const defaultColor = 0x000000
     const [matrix, setMatrix] = useState(Array.from(Array(16), () => new Array(16).fill(defaultColor)))
+
+    LedClient.setStateListener((newState)=>{
+        setMatrix(newState)
+    })
     
     const container: React.CSSProperties = {
         width: "100%",
@@ -31,12 +36,7 @@ export default function App() {
 
     const onPressHandler = useCallback((x: number, y: number)=> {
         console.log("pressed x: " + x + ", y: " + y)
-        setMatrix((prevMatrix)=>{
-            const newMatrix = [...prevMatrix]
-            newMatrix[y][x] = 0xff0000
-            console.log(newMatrix)
-            return newMatrix
-        })
+        LedClient.paintTile(x, y, "0xff0000")
     }, [])
     
     return (

@@ -10,6 +10,7 @@
   "author": "Azriel Alvarado",
   "license": "ISC",
   "dependencies": {
+    "azledclientbrowser": "file:../client/browser",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
