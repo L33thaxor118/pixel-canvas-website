@@ -22,7 +22,9 @@ function PixelGrid() {
   const title: React.CSSProperties = {
       width: "100%",
       height: "auto",
-      padding: "20px",
+
+      paddingTop: "20px",
+      paddingBottom: "20px",
       textAlign: "center",
       fontFamily: "Chakra Petch",
       color: 'whitesmoke'

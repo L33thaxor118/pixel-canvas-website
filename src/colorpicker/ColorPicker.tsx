@@ -11,15 +11,17 @@ const ColorPicker = (props: ColorPickerPropTypes) => {
   const [selectedIdx, setSelectedIdx] = useState(0)
 
   const container: React.CSSProperties = {
-      width: "25%",
+      width: "510px",
       height: "70px",
       display: "flex",
       overflow: "scroll",
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: 'rgb(113, 135, 146)',
-      margin: '20px',
-      borderRadius: '20px'
+      marginTop: '20px',
+      borderRadius: '20px',
+      paddingLeft: '12px',
+      paddingRight: '12px'
   }
   const colorContainer = (selected: boolean, color: string): React.CSSProperties => {
       return {
