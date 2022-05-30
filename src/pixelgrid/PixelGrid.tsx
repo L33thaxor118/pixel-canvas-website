@@ -24,8 +24,8 @@ function PixelGrid() {
   }
   const grid: React.CSSProperties = {
       display: "grid",
-      gridTemplateColumns: "repeat(16, 40px)",
-      gridTemplateRows: "repeat(16, 40px)"
+      gridTemplateColumns: `repeat(16, ${isSmallDevice ? 22 : 40}px)`,
+      gridTemplateRows: `repeat(16, ${isSmallDevice ? 22 : 40}px)`
   }
 
   const onPressHandler = useCallback((x: number, y: number)=> {
@@ -43,7 +43,7 @@ function PixelGrid() {
                   (row, y)=>row.map((color, x)=><Pixel key={"x:"+x+"y:"+y} color={color} x={x} y={y} onPress={onPressHandler} paintOnTouch={isPainting}/>)
               )}
           </div>
-          <ColorPicker onColorChanged={onColorChanged} color={color}/>
+          <ColorPicker isSmallDevice={isSmallDevice} onColorChanged={onColorChanged} color={color}/>
       </div>
   )
 }

@@ -4,15 +4,16 @@ import { Colors, decimalColorToRgb } from "../utils/colorUtils"
 
 interface ColorPickerPropTypes {
   onColorChanged: (color: number)=>void,
-  color: number
+  color: number,
+  isSmallDevice: boolean
 }
 
 const ColorPicker = (props: ColorPickerPropTypes) => {
   const [selectedIdx, setSelectedIdx] = useState(0)
 
   const container: React.CSSProperties = {
-      width: "510px",
-      height: "70px",
+      width: `${props.isSmallDevice ? 345 : 510}px`,
+      height: `${props.isSmallDevice ? 60 : 70}px`,
       display: "flex",
       overflow: "scroll",
       alignItems: "center",
@@ -27,15 +28,16 @@ const ColorPicker = (props: ColorPickerPropTypes) => {
   const colorContainer = (selected: boolean, color: string): React.CSSProperties => {
       return {
           boxSizing: 'border-box',
-          width: "50px",
-          height: "50px",
+          width: `${props.isSmallDevice ? 35 : 50}px`,
+          height: `${props.isSmallDevice ? 35 : 50}px`,
           borderRadius: "100%",
           borderWidth: '2px',
           borderStyle: `${selected ? 'solid' : 'none'}`,
           backgroundColor: color,
           marginLeft: `3px`,
           marginRight: `3px`,
-          cursor: 'pointer'
+          cursor: 'pointer',
+          opacity: `${selected ? 1 : 0.5}`
       }
   }
 
