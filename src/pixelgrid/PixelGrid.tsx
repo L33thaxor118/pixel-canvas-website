@@ -3,12 +3,14 @@ import LedClient from "azledclientbrowser"
 import { useCallback, useState } from "react"
 import Pixel from "./pixel"
 import ColorPicker from "../colorpicker"
+import { useMediaQuery } from "../hooks/useMediaQuery"
 
 function PixelGrid() {
   const defaultColor = 0x000000
   const [matrix, setMatrix] = useState(Array.from(Array(16), () => new Array(16).fill(defaultColor)))
   const [color, setColor] = useState(defaultColor)
   const [isPainting, setIsPainting] = useState(false)
+  const isSmallDevice = useMediaQuery('(max-width: 640px)');
 
   LedClient.setStateListener((newState)=>{
       setMatrix(newState)
@@ -19,24 +21,10 @@ function PixelGrid() {
       flexDirection: "column",
       alignItems: "center",
   }
-  const title: React.CSSProperties = {
-      width: "100%",
-      height: "auto",
-
-      paddingTop: "20px",
-      paddingBottom: "20px",
-      textAlign: "center",
-      fontFamily: "Chakra Petch",
-      color: 'whitesmoke'
-  }
   const grid: React.CSSProperties = {
       display: "grid",
       gridTemplateColumns: "repeat(16, 40px)",
       gridTemplateRows: "repeat(16, 40px)"
-  }
-  const item: React.CSSProperties = {
-      backgroundColor: 'red',
-      borderStyle: 'solid'
   }
 
   const onPressHandler = useCallback((x: number, y: number)=> {
@@ -49,7 +37,6 @@ function PixelGrid() {
   
   return (
       <div style={container}>
-          <h1 style={title}>Welcome</h1>
           <div style={grid} onMouseDown={()=>setIsPainting(true)} onMouseUp={()=>setIsPainting(false)}>
               {matrix.flatMap(
                   (row, y)=>row.map((color, x)=><Pixel key={"x:"+x+"y:"+y} color={color} x={x} y={y} onPress={onPressHandler} paintOnTouch={isPainting}/>)

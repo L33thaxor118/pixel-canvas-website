@@ -20,19 +20,20 @@ const ColorPicker = (props: ColorPickerPropTypes) => {
       backgroundColor: 'rgb(113, 135, 146)',
       marginTop: '20px',
       borderRadius: '20px',
-      paddingLeft: '12px',
-      paddingRight: '12px'
+      paddingLeft: '10px',
+      paddingRight: '10px'
   }
   const colorContainer = (selected: boolean, color: string): React.CSSProperties => {
       return {
+          boxSizing: 'border-box',
           width: "50px",
           height: "50px",
           borderRadius: "100%",
           borderWidth: '2px',
           borderStyle: `${selected ? 'solid' : 'none'}`,
           backgroundColor: color,
-          marginLeft: `${selected ? 1 : 3}px`,
-          marginRight: `${selected ? 1 : 3}px`,
+          marginLeft: `3px`,
+          marginRight: `3px`,
           cursor: 'pointer'
       }
   }
