@@ -20,6 +20,7 @@ function PixelGrid() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      backgroundColor: 'rgb(69, 90, 100)'
   }
   const grid: React.CSSProperties = {
       display: "grid",

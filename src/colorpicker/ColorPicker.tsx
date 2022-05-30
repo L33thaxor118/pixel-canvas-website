@@ -21,7 +21,8 @@ const ColorPicker = (props: ColorPickerPropTypes) => {
       marginTop: '20px',
       borderRadius: '20px',
       paddingLeft: '10px',
-      paddingRight: '10px'
+      paddingRight: '10px',
+      marginBottom: '20px'
   }
   const colorContainer = (selected: boolean, color: string): React.CSSProperties => {
       return {
