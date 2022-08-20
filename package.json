@@ -10,7 +10,6 @@
   "author": "Azriel Alvarado",
   "license": "ISC",
   "dependencies": {
-    "azledclientbrowser": "file:../../../../dev/projects/led/client/browser",
     "pixel-canvas-client-browser": "file:../../../../dev/projects/led/client/browser",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"

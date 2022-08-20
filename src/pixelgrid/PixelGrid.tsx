@@ -1,5 +1,5 @@
 import * as React from "react"
-import LedClient from "azledclientbrowser"
+import LedClient from "pixel-canvas-client-browser"
 import { useCallback, useState } from "react"
 import Pixel from "./pixel"
 import ColorPicker from "../colorpicker"
@@ -13,7 +13,8 @@ function PixelGrid() {
   const isSmallDevice = useMediaQuery('(max-width: 640px)');
 
   LedClient.setStateListener((newState)=>{
-      setMatrix(newState)
+    console.log(newState)
+    setMatrix(JSON.parse(JSON.stringify(newState)))
   })
   
   const container: React.CSSProperties = {
@@ -36,6 +37,7 @@ function PixelGrid() {
       setColor(color)
   }, [color])
   
+  console.log("re-rendered")
   return (
       <div style={container}>
           <div style={grid} onMouseDown={()=>setIsPainting(true)} onMouseUp={()=>setIsPainting(false)}>
