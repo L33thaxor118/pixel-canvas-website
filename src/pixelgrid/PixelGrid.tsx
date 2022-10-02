@@ -12,10 +12,12 @@ function PixelGrid() {
   const [isPainting, setIsPainting] = useState(false)
   const isSmallDevice = useMediaQuery('(max-width: 640px)');
 
-  LedClient.setStateListener((newState)=>{
-    console.log(newState)
-    setMatrix(JSON.parse(JSON.stringify(newState)))
-  })
+  React.useEffect(()=>{
+    LedClient.setStateListener((newState)=>{
+        console.log(newState)
+        setMatrix(JSON.parse(JSON.stringify(newState)))
+      })
+  }, [])
   
   const container: React.CSSProperties = {
       display: "flex",
@@ -30,7 +32,7 @@ function PixelGrid() {
   }
 
   const onPressHandler = useCallback((x: number, y: number)=> {
-      LedClient.paintTile(x, y, color)
+      LedClient.paintPixel(x, y, color)
   }, [color])
 
   const onColorChanged = useCallback((color: number)=>{
